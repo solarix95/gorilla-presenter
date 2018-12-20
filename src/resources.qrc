@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="phong.frag">shaders/phong.frag</file>
+        <file alias="phong.vert">shaders/phong.vert</file>
+        <file alias="flat.frag">shaders/flat.frag</file>
+        <file alias="flat.vert">shaders/flat.vert</file>
+        <file>demos/hello.json</file>
+        <file>demos/hello_slide.html</file>
+        <file>resources/icons8-gorilla-50.png</file>
+    </qresource>
+</RCC>
