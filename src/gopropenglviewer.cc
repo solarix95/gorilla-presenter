@@ -13,6 +13,7 @@ GoPrOpenglViewer::GoPrOpenglViewer()
     : mTransitionType(Cube)
 {
     setWindowIcon(QIcon(":resources/icons8-gorilla-50.png"));
+    setWindowTitle("Gorilla Projector");
     mPosZ[0] = mCurrentZ = -7;
     mPosZ[1] = 1;
     mPosIndex = 0;

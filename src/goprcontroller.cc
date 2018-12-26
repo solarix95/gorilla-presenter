@@ -18,13 +18,14 @@ GoPrController::GoPrController(QWidget *parent) :
     ui->setupUi(this);
     setWindowIcon(QIcon(":resources/icons8-gorilla-50.png"));
 
-    connect(ui->btnOpenLiveImage, SIGNAL(clicked(bool)), this, SLOT(selectLiveImage()));
-    connect(ui->btnLogo,          SIGNAL(clicked(bool)), this, SLOT(selectLogo()));
+    // connect(ui->btnOpenLiveImage, SIGNAL(clicked(bool)), this, SLOT(selectLiveImage()));
+    // connect(ui->btnLogo,          SIGNAL(clicked(bool)), this, SLOT(selectLogo()));
 
     mPlayer.setRenderer(mRenderer);
     ui->stackView->setModel(new GoPrStackModel(this,&mPlayer));
 
     mOpenGlViewer = new GoPrOpenglViewer();
+
 
     QObject::connect(this, SIGNAL(requestImage(QString)), mOpenGlViewer, SLOT(showLiveImage(QString)));
     QObject::connect(mOpenGlViewer, SIGNAL(viewerReady()), this, SLOT(init()));
