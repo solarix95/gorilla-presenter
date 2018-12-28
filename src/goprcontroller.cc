@@ -4,8 +4,10 @@
 #include "goprfilesource.h"
 #include "goprplayer.h"
 #include "goprstackmodel.h"
+#include "utils/about.h"
 #include "ui_gopreditor.h"
 #include <QFileDialog>
+#include <QMessageBox>
 
 //-------------------------------------------------------------------------------------------------
 GoPrController::GoPrController(QWidget *parent) :
@@ -20,6 +22,9 @@ GoPrController::GoPrController(QWidget *parent) :
 
     // connect(ui->btnOpenLiveImage, SIGNAL(clicked(bool)), this, SLOT(selectLiveImage()));
     // connect(ui->btnLogo,          SIGNAL(clicked(bool)), this, SLOT(selectLogo()));
+
+    connect(ui->btnShowProjector, SIGNAL(clicked(bool)), this, SLOT(showProjector()));
+    connect(ui->btnAbout, SIGNAL(clicked(bool)), this, SLOT(showAbout()));
 
     mPlayer.setRenderer(mRenderer);
     ui->stackView->setModel(new GoPrStackModel(this,&mPlayer));
@@ -76,6 +81,30 @@ void GoPrController::init()
             mPlayer.addPresentation(newPresentation);
         }
     }
+}
+
+//-------------------------------------------------------------------------------------------------
+void GoPrController::closeEvent(QCloseEvent *event)
+{
+    qApp->quit();
+    QWidget::closeEvent(event);
+}
+
+//-------------------------------------------------------------------------------------------------
+void GoPrController::showProjector()
+{
+    Q_ASSERT(mOpenGlViewer);
+    if (mOpenGlViewer->windowState() == Qt::WindowMinimized)
+        mOpenGlViewer->showNormal();
+    if (!mOpenGlViewer->isVisible())
+        mOpenGlViewer->show();
+    mOpenGlViewer->raise();
+}
+
+//-------------------------------------------------------------------------------------------------
+void GoPrController::showAbout()
+{
+    QMessageBox::about(this, "Gorilla Presenter", trUtf8("Gorilla Presenter\nVersion " VERSION "\nCopyright (C) by Roman Held\n\n" LICENSE));
 }
 
 //-------------------------------------------------------------------------------------------------

@@ -7,7 +7,7 @@
 QT       += core gui
 CONFIG   += debug
 
-LIBS     += -lopencv_video -lopencv_core -lopencv_highgui
+LIBS     += -lopencv_video -lopencv_core -lopencv_highgui -lopencv_videoio
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -62,7 +62,8 @@ HEADERS  += \
     streams/gopropencvstream.h \
     streams/goprimagestream.h \
     streams/gopropencvsource.h \
-    utils/goprterminator.h
+    utils/goprterminator.h \
+    utils/about.h
 
 FORMS    += gopreditor.ui
 

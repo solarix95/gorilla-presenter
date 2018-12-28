@@ -1,7 +1,6 @@
-#version 330 core
+#version 130
 out vec4 FragColor;
 
-// #version 110
 // Simple fragment shader.
 // Does texturing and phong shading.
 
@@ -14,11 +13,11 @@ uniform sampler2D texture;
 void main() {
 
     // vec3 materialColor = texture2D( texture, texcoord ).rgb;
-
     // gl_FragColor.rgb = materialColor;
 
     vec4 materialColor = texture2D( texture, texcoord );
 
+    // Alpha-Transparency
     if(materialColor.a < 0.1)
             discard;
 

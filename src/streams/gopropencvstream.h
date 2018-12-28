@@ -15,7 +15,6 @@ public:
 
     virtual void stop();
 
-
 private:
     GoPrOpenCvSource *mSource;
 };

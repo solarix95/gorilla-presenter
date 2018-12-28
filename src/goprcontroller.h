@@ -30,7 +30,12 @@ signals:
 public slots:
     void init();
 
+protected:
+    virtual void closeEvent(QCloseEvent *event) override;
+
 private slots:
+    void showProjector();
+    void showAbout();
     void selectLiveImage();
     void selectLogo();
 
